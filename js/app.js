@@ -1,5 +1,6 @@
-const allHorns = [];
-const allKeys = [];
+let allHorns = [];
+let allKeys = [];
+var fileName = '../data/page-1.json'
 
 const MyHorns = function(image_url, title, description, keyword, horns){
   this.image_url = image_url;
@@ -11,10 +12,19 @@ const MyHorns = function(image_url, title, description, keyword, horns){
   allKeys.push(this.keyword);
 }
 
-MyHorns.readJson = function(){
-  const filePath = 'data/page-1.json';
-  const fileType = 'json';
-  $.get(filePath, fileType).then(myHornsJson => {
+
+// PT adding new handlebarline
+MyHorns.prototype.tohtml=function(){
+  let $target=$('#handlebar').html();
+  let $source=Handlebars.compile($target);
+  return $source(this);
+};
+
+MyHorns.readJson = function(filename){
+  // const filePath = 'data/page-1.json';
+  // const fileType = 'json';
+  
+  $.get(filename,'json').then(myHornsJson => {
     myHornsJson.forEach(horn => {
       new MyHorns(horn.image_url, horn.title, horn.description, horn.keyword, horn.keyword)
     });
@@ -24,6 +34,19 @@ MyHorns.readJson = function(){
     });
   });
 };
+MyHorns.readJson('../data/page-1.json');
+// MyHorns.loadMyHorn=()=>
+//   MyHorns.allMyHorn.forEach(horn=>{$('#photo-template').append(horn.tohtml());});
+
+// function showPage(pageNum){
+//   let infoName;
+//   if(pageNum === 1){
+//     infoName = 'data/page-1.json';
+//   } else {
+//     infoName = 'data/page-2.json';
+//   }
+// };
+
 
 $('select').on('change',function(){
   $('div').hide();
@@ -44,9 +67,39 @@ MyHorns.prototype.render = function(keyword) {
   hornClone.attr('class',this.keyword);
 }
 
+// PT add page one
+$('#one').on('click',function(){
+  fileName = '../data/page-1.json'
+  console.log('hit1');
+  $('div').remove();
+  //clear the dropdown list
+  $('option').remove();
+  MyHorns.allHorns=[];
+  MyHorns.allKeys=[];
+
+  //load the page
+  $(()=>MyHorns.readJson(fileName));
+});
+
+// PT adding page two
+$('#two').click(function(){
+  fileName = '../data/page-2.json'
+  console.log('hit');
+  //clear the div
+  $('div').remove();
+  //clear the dropdown list
+  $('option').remove();
+
+  MyHorns.allHorns=[];
+  console.log(MyHorns.allHorns)
+  MyHorns.allKeys=[];
+  //load the page
+  $(()=>MyHorns.readJson(fileName));
+});
 
 function minOp(keyword) {
   $('option.' + keyword).remove();
 }
 
-MyHorns.readJson();
+
+// showPage();
