@@ -41,7 +41,7 @@ $('select').on('change',function(){
 
 MyHorns.prototype.render = function(keyword) {
   minOp(keyword);
-  $('select').append($('<option>', {text:keyword}).attr('class',this.keyword));
+  $('#filterName').append($('<option>', {text:keyword}).attr('class',this.keyword));
   $('main').append('<div class="clone"></div>');
   let hornClone=$('div[class="clone"]');
   let hornHtml=$('#photo-template').html();

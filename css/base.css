@@ -5,11 +5,22 @@
 img {
     height: 200px;
     width: 300px;
+    border-radius: 30px;
 }
 
 select {
     display: block;
     margin: auto;
+    font-size: 18px;
+}
+
+#menu {
+    width: 100%;
+    height: auto;
+}
+
+button {
+    font-size: 24px;
 }
 
 div img, h2, p{
@@ -20,7 +31,7 @@ div img, h2, p{
 }
 
 div {
-    width: 320px;
+    width: 33%;
     height: 210px;
     margin-top: 40px;
     margin-bottom: 20px;
@@ -29,9 +40,11 @@ div {
 
 h1 {
     text-align: center;
+    font-size: 400%;
 }
 
 footer {
+    width: 100%;
     float: left;
 }
 
@@ -40,5 +53,43 @@ footer {
     body {
         background-color: green;
     }
-}
+    img {
+        height: 200px;
+        width: 300px;
+        border-radius: 30px;
+    }
 
+    select {
+        display: block;
+        margin: auto;
+        font-size: 18px;
+    }
+    
+    button {
+        font-size: 24px;
+    }
+
+    div img, h2, p{
+        margin: auto;
+        display: block;
+        text-align: center;
+
+    }
+
+    div {
+        width: 320px;
+        height: 210px;
+        margin-top: 40px;
+        margin-bottom: 20px;
+        float: left;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    footer {
+        width: 100%;
+        float: left;
+    }
+}
