@@ -34,7 +34,8 @@ MyHorns.readJson = function(filename){
     });
   });
 };
-MyHorns.readJson('../data/page-1.json');
+
+$(()=>MyHorns.readJson(fileName));
 // MyHorns.loadMyHorn=()=>
 //   MyHorns.allMyHorn.forEach(horn=>{$('#photo-template').append(horn.tohtml());});
 
@@ -74,8 +75,8 @@ $('#one').on('click',function(){
   $('div').remove();
   //clear the dropdown list
   $('option').remove();
-  MyHorns.allHorns=[];
-  MyHorns.allKeys=[];
+  allHorns=[];
+  allKeys=[];
 
   //load the page
   $(()=>MyHorns.readJson(fileName));
@@ -90,9 +91,9 @@ $('#two').click(function(){
   //clear the dropdown list
   $('option').remove();
 
-  MyHorns.allHorns=[];
+  allHorns=[];
   console.log(MyHorns.allHorns)
-  MyHorns.allKeys=[];
+  allKeys=[];
   //load the page
   $(()=>MyHorns.readJson(fileName));
 });
