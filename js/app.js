@@ -12,7 +12,6 @@ const MyHorns = function(image_url, title, description, keyword, horns){
   allKeys.push(this.keyword);
 }
 
-
 // PT adding new handlebarline
 MyHorns.prototype.tohtml=function(){
   let $target=$('#handlebar').html();
@@ -21,9 +20,6 @@ MyHorns.prototype.tohtml=function(){
 };
 
 MyHorns.readJson = function(filename){
-  // const filePath = 'data/page-1.json';
-  // const fileType = 'json';
-  
   $.get(filename,'json').then(myHornsJson => {
     myHornsJson.forEach(horn => {
       new MyHorns(horn.image_url, horn.title, horn.description, horn.keyword, horn.keyword)
@@ -36,18 +32,6 @@ MyHorns.readJson = function(filename){
 };
 
 $(()=>MyHorns.readJson(fileName));
-// MyHorns.loadMyHorn=()=>
-//   MyHorns.allMyHorn.forEach(horn=>{$('#photo-template').append(horn.tohtml());});
-
-// function showPage(pageNum){
-//   let infoName;
-//   if(pageNum === 1){
-//     infoName = 'data/page-1.json';
-//   } else {
-//     infoName = 'data/page-2.json';
-//   }
-// };
-
 
 $('select').on('change',function(){
   $('div').hide();
@@ -101,6 +85,3 @@ $('#two').click(function(){
 function minOp(keyword) {
   $('option.' + keyword).remove();
 }
-
-
-// showPage();
