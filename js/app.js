@@ -19,28 +19,24 @@ MyHorns.readJson = function(filename){
     $.get(filename,'json').then(myHornsJson => {
         myHornsJson.forEach(horn => {
             new MyHorns(horn.image_url, horn.title, horn.description, horn.keyword, horn.horns);
-            toHtml(horn.image_url, horn.title, horn.description, horn.keyword, horn.horns);
+            let target = $('#imgTemp').html();
+            toHtmlImg(horn.image_url, horn.title, horn.description, horn.keyword, horn.horns, target);
         });
     });
 };
 
-function toHtml(image_url, title, description, keyword, horns) {
-    let template = $('#imgTemp').html();
+function toHtmlImg(image_url, title, description, keyword, horns, target) {
     let context = { 
         "imgKeyword": keyword, 
         "imgTitle": title, 
-        "imgSrc": image_url 
+        "imgSrc": image_url,
+        "opText": keyword,
+        "opClass": keyword,
+        "opHorns": horns
     };
-    let templateScript = Handlebars.compile(template);
+    let templateScript = Handlebars.compile(target);
     let html = templateScript(context);
     $(document.body).append(html);
 }
 
 $(()=>MyHorns.readJson(fileName));
-
-
-// MyHorns.prototype.tohtml=function(){
-//     let $target=$('#handlebar').html();
-//     let $source=Handlebars.compile($target);
-//     return $source(this);
-//   }
