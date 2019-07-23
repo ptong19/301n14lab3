@@ -38,7 +38,9 @@ function toHtmlOp(keyword){
         "opClass": keyword,
         "opText": keyword
     };
-    console.log(keyword);
+    let templateScript = Handlebars.compile(target);
+    let html = templateScript(context);
+    $('select').append(html);
 }
 
 function toHtmlImg(image_url, title, keyword) {
@@ -50,7 +52,7 @@ function toHtmlImg(image_url, title, keyword) {
     };
     let templateScript = Handlebars.compile(target);
     let html = templateScript(context);
-    $(document.body).append(html);
+    $('main').append(html);
 }
 
 var removeDuplicates = function(arr) {
