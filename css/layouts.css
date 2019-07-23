@@ -1,0 +1,43 @@
+div img, h2, p{
+    margin: auto;
+    display: block;
+    text-align: center;
+
+}
+
+div {
+    width: 33%;
+    height: 210px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    float: left;
+}
+
+footer {
+    width: 100%;
+    float: left;
+}
+
+
+@media only screen and (max-width: 767px){
+
+    div img, h2, p{
+        margin: auto;
+        display: block;
+        text-align: center;
+
+    }
+
+    div {
+        width: 320px;
+        height: 210px;
+        margin-top: 40px;
+        margin-bottom: 20px;
+        float: left;
+    }
+
+    footer {
+        width: 100%;
+        float: left;
+    }
+}

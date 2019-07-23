@@ -1,7 +1,7 @@
 let obName = [];
 let obKeyword = [];
 let obHorns = [];
-let fileName = '../data/page-1.json'
+let fileName = '../data/page-1.json';
 
 const MyHorns = function(image_url, title, description, keyword, horns){
     this.image_url = image_url;
@@ -16,65 +16,86 @@ const MyHorns = function(image_url, title, description, keyword, horns){
 
 MyHorns.readJson = function(filename){
     $.get(filename,'json').then(myHornsJson => {
+        //Creates the objects from the JSON
         myHornsJson.forEach(horn => {
             new MyHorns(horn.image_url, horn.title, horn.description, horn.keyword, horn.horns);
         });
+
+        //removes duplicates in the arrays that will be pushed to selects later
         obName = removeDuplicates(obName);
         obKeyword = removeDuplicates(obKeyword);
         obHorns = removeDuplicates(obHorns);
-        obHorns.sort(function(a,b){return a-b});
+        obHorns.sort(function(a,b){return a-b}); //Sorts number array by number decending
 
         //Populates Select Filter By Name
-        let selectId = "type";
+        let  opTypeId = "type";
+        restoreOpDefault(opTypeId);
         obKeyword.forEach(horn => {
-            toHtmlOp(horn, selectId);
+            toHtmlOp(horn, opTypeId);
         });
 
         //Populates Select Filter by Horns
-        let test1 = "horns";
+        let  opHornId = "horns";
+        restoreOpDefault(opHornId);
         obHorns.forEach(horn => {
-            toHtmlOp(horn, test1);
+            toHtmlOp(horn, opHornId);
         });
 
         //Populates Select Filter by Name
-        let test2 = "name";
+        let opNameId = "name";
+        restoreOpDefault(opNameId);
         obName.forEach(horn => {
-            toHtmlOp(horn, test2);
+            toHtmlOp(horn, opNameId);
         });
 
+        //Populates the Images and Titles for the Images to the DOM
         myHornsJson.forEach(horn => {
-            toHtmlImg(horn.image_url, horn.title, horn.keyword);
+            toHtmlImg(horn.image_url, horn.title, horn.keyword, horn.horns);
         });
     });
 };
 
+//Used to populate the Options Dropdown
 function toHtmlOp(keyword, selectId){
-    target = $('#opTemp').html();
-    let context = {
+    target = $('#opTemp').html(); // pulls the DIV element from the dom to populate later
+    let context = { //inputs the variable into the two template elements
         "opClass": keyword,
         "opText": keyword
-    };
-    let templateScript = Handlebars.compile(target);
-    let html = templateScript(context);
-    $('#' + selectId).append(html);
+    }; 
+    let templateScript = Handlebars.compile(target); //Compliles the target, empty option into the select element
+    let html = templateScript(context); //Populates the empty option
+    $('#' + selectId).append(html); //appends the data to the DOM
 }
 
-function toHtmlImg(image_url, title, keyword) {
+//Used to populate the image tags
+function toHtmlImg(image_url, title, keyword, horns) {
     target = $('#imgTemp').html();
     let context = { 
         "imgKeyword": keyword, 
         "imgTitle": title, 
-        "imgSrc": image_url
+        "imgSrc": image_url,
+        "imgHorn": horns
     };
     let templateScript = Handlebars.compile(target);
     let html = templateScript(context);
     $('main').append(html);
 }
 
-var removeDuplicates = function(arr) {
-    var sortedArray = arr.sort();
-    var len = sortedArray.length - 1;
-    var newArr = [];
+function restoreOpDefault(val) {
+    target = $('#opDefa').html();
+    let context = {
+        "default": val
+    };
+    let templateScript = Handlebars.compile(target); //Compliles the target, empty option into the select element
+    let html = templateScript(context); //Populates the empty option
+    $('#' + val).append(html); //appends the data to the DOM
+}
+
+//used to sort and remove elements in an array passed to it.
+let removeDuplicates = function(arr) {
+    let sortedArray = arr.sort();
+    let len = sortedArray.length - 1;
+    let newArr = [];
     if (len >= 0) {
         for (var i = 0; i < len; i++) {
             if (sortedArray[i] !== sortedArray[i + 1]) {
@@ -86,4 +107,31 @@ var removeDuplicates = function(arr) {
     return newArr;
 }
 
+//Event listener and Changes the elements to page-1 JSON
+$('#one').on('click',function(){
+    fileName = '../data/page-1.json';
+    $('div').remove();
+    $('option').remove();
+    allHorns=[];
+    allKeys=[];
+    $(()=>MyHorns.readJson(fileName));
+  });
+  
+  //Event listener and Changes the elements to page-2 JSON
+  $('#two').click(function(){
+    fileName = '../data/page-2.json';
+    console.log('hit');
+    $('div').remove();
+    $('option').remove();
+    allHorns=[];
+    allKeys=[];
+    $(()=>MyHorns.readJson(fileName));
+  });
+
+//Call to start everything off and load objects and load everythign into the DOM
 $(()=>MyHorns.readJson(fileName));
+
+$('select').on('change',function(){
+    $('div').hide();
+    $('div.' + $(this).val()).show();
+  });
