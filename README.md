@@ -43,7 +43,27 @@ You have the option of using the provided `index.html` file, but it is not a req
 For each of the features listed below, make an estimate of the time it will take you to complete the feature, and record your start and finish times for that feature:
 
 ```
-Number and name of feature: ________________________________
+Number and name of feature: (AJ) Convert elements loading onto DOM to use handlebars
+
+Estimate of time needed to complete: 3
+
+Start time: 1000
+
+Finish time: 1300
+
+Actual time needed to complete: 3
+```
+Number and name of feature: (AJ) Ability to sort elements by Name, Horns or Keywords
+
+Estimate of time needed to complete: 6
+
+Start time: 1300
+
+Finish time: 1900
+
+Actual time needed to complete: 6
+```
+Number and name of feature: ____________________________________
 
 Estimate of time needed to complete: _____
 
@@ -52,7 +72,6 @@ Start time: _____
 Finish time: _____
 
 Actual time needed to complete: _____
-```
 
 Add this information to your README.
 
