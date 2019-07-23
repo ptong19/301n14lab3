@@ -1,4 +1,4 @@
-# Lab 02: jQuery Selectors and Events
+# Lab 03: Flexbox and Templating
 
 ## Configuration
 
@@ -18,6 +18,7 @@ lab-02-repository
 │   └── reset.css
 ├── data
 │   └── page-1.json
+    └── page-2.json
 ├── index.html
 ├── js
 │    └── app.js
@@ -37,6 +38,7 @@ You have the option of using the provided `index.html` file, but it is not a req
 ## Resources
 
 - [page-1.json](./starter-code/page-1.json)
+- [page-2.json](./starter-code/page-2.json)
 
 ### Time Estimate
 
@@ -63,15 +65,25 @@ Finish time: 1900
 
 Actual time needed to complete: 6
 ```
-Number and name of feature: ____________________________________
+Number and name of feature: (PT) Sort the images by one of the properties on page load. This should also apply to the second page of images.
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 3
 
-Start time: _____
+Start time: 1200
 
-Finish time: _____
+Finish time: 1600
 
-Actual time needed to complete: _____
+Actual time needed to complete: 4
+....
+Number and name of feature: (PT) Use jQuery to make a copy of the HTML template of the photo component. For each object, fill in the duplicated template with its properties, then append the copy to the DOM
+
+Estimate of time needed to complete: 5
+
+Start time: 1400
+
+Finish time: 1900
+
+Actual time needed to complete: 4
 
 Add this information to your README.
 
