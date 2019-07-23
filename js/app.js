@@ -23,16 +23,32 @@ MyHorns.readJson = function(filename){
         obKeyword = removeDuplicates(obKeyword);
         obHorns = removeDuplicates(obHorns);
         obHorns.sort(function(a,b){return a-b});
+
+        //Populates Select Filter By Name
+        let selectId = "type";
         obKeyword.forEach(horn => {
-            toHtmlOp(horn);
+            toHtmlOp(horn, selectId);
         });
+
+        //Populates Select Filter by Horns
+        let test1 = "horns";
+        obHorns.forEach(horn => {
+            toHtmlOp(horn, test1);
+        });
+
+        //Populates Select Filter by Name
+        let test2 = "name";
+        obName.forEach(horn => {
+            toHtmlOp(horn, test2);
+        });
+
         myHornsJson.forEach(horn => {
             toHtmlImg(horn.image_url, horn.title, horn.keyword);
         });
     });
 };
 
-function toHtmlOp(keyword){
+function toHtmlOp(keyword, selectId){
     target = $('#opTemp').html();
     let context = {
         "opClass": keyword,
@@ -40,7 +56,7 @@ function toHtmlOp(keyword){
     };
     let templateScript = Handlebars.compile(target);
     let html = templateScript(context);
-    $('select').append(html);
+    $('#' + selectId).append(html);
 }
 
 function toHtmlImg(image_url, title, keyword) {
