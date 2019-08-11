@@ -30,6 +30,7 @@ MyHorns.readJson = function(filename){
         //Populates Select Filter By Name
         let  opTypeId = "type";
         restoreOpDefault(opTypeId);
+        console.log(obKeyword);
         obKeyword.forEach(horn => {
             toHtmlOp(horn, opTypeId);
         });
@@ -47,6 +48,10 @@ MyHorns.readJson = function(filename){
         obName.forEach(horn => {
             toHtmlOp(horn, opNameId);
         });
+
+        obKeyword = []; //Clears options to accept new drop down options
+        obHorns = []; //Clears options to accept new drop down options
+        obName = []; //Clears options to accept new drop down options
 
         //Populates the Images and Titles for the Images to the DOM
         myHornsJson.forEach(horn => {
@@ -112,19 +117,14 @@ $('#one').on('click',function(){
     fileName = '../data/page-1.json';
     $('div').remove();
     $('option').remove();
-    allHorns=[];
-    allKeys=[];
     $(()=>MyHorns.readJson(fileName));
   });
   
   //Event listener and Changes the elements to page-2 JSON
   $('#two').click(function(){
     fileName = '../data/page-2.json';
-    console.log('hit');
     $('div').remove();
     $('option').remove();
-    allHorns=[];
-    allKeys=[];
     $(()=>MyHorns.readJson(fileName));
   });
 
