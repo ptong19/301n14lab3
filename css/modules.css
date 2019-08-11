@@ -12,16 +12,23 @@ img {
     height: 200px;
     width: 300px;
     border-radius: 30px;
+    margin: auto;
 }
 
 select {
-    display: block;
+    display: flex;
     margin: auto;
     font-size: 18px;
 }
 
 button {
     font-size: 24px;
+}
+
+p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 @media only screen and (max-width: 767px){
@@ -35,7 +42,7 @@ button {
     }
 
     select {
-        display: block;
+        display: flex;
         margin: auto;
         font-size: 18px;
     }

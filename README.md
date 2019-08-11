@@ -86,6 +86,34 @@ Finish time: 1900
 Actual time needed to complete: 4
 
 Add this information to your README.
+....
+Number and name of feature: Fixing the options not clearing data when changin page
+
+Estimate of time needed to complete: 1 hour
+
+Start time: 2200
+
+Finish time: 2300
+
+Actual time needed to complete: 1 hour
+
+Add this information to your README.
+
+....
+Number and name of feature: Convert to flexbox
+
+Estimate of time needed to complete: 30 min
+
+Start time: 2300
+
+Finish time: 2330
+
+Actual time needed to complete: 30 min
+
+Add this information to your README.
+
+....
+
 
 ### Feature #1: Display images
 

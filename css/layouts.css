@@ -1,8 +1,7 @@
 div img, h2, p{
-    margin: auto;
-    display: block;
-    text-align: center;
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 div {
@@ -14,8 +13,9 @@ div {
 }
 
 footer {
+    margin-top: 10%;
     width: 100%;
-    float: left;
+    display: inline-flex;
 }
 
 
@@ -23,7 +23,7 @@ footer {
 
     div img, h2, p{
         margin: auto;
-        display: block;
+        display: flex;
         text-align: center;
 
     }
